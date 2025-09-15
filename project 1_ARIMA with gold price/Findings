@@ -1,0 +1,18 @@
+# Findings: Gold Price Analysis
+
+## Stationarity
+The Augmented Dickey-Fuller (ADF) test indicated that the original gold price series was non-stationary.
+After applying first-order differencing, the series became stationary, making it suitable for time series modeling.
+- ADF test (p-value < 0.01) → series is stationary after differencing.
+
+## Model Selection
+- Best model: ARIMA(1,1,0)  
+- AIC = 20577.78, BIC = 20589.44
+-> The lower their value ,the better
+
+## Residual Diagnostics
+- Ljung-Box test's p-value = 0.1396 → residuals are uncorrelated (nearly behave like white noise).
+
+## Forecast
+- Forecasts for 365 days ahead show a random-walk-like behavior with wide confidence intervals.
+This reflects the high volatility and uncertainty of gold prices, highlighting the difficulty of making precise long-term predictions in such markets.
