@@ -7,14 +7,14 @@ To explore time series modeling on daily gold prices and test whether the series
 
 -Methods:
 
-Data Preprocessing: Converted raw gold price data into a time series format.
+->Data Preprocessing: Converted raw gold price data into a time series format.
 
-Stationarity Testing: Augmented Dickey-Fuller (ADF) test confirmed non-stationarity.
+->Stationarity Testing: Augmented Dickey-Fuller (ADF) test confirmed non-stationarity.
 
-Differencing: Applied first-order differencing to achieve stationarity.
+->Differencing: Applied first-order differencing to achieve stationarity.
 
-ACF & PACF Analysis: Investigated lag structures.
+->ACF & PACF Analysis: Investigated lag structures.
 
-Modeling: Fitted ARIMA models via auto.arima.
+->Modeling: Fitted ARIMA models via auto.arima.
 
-Key Finding: Gold prices largely behaved like a random walk, with limited short-term predictive power
+->Key Finding: Gold prices largely behaved like a random walk, with limited short-term predictive power
