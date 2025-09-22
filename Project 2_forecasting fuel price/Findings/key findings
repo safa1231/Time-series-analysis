@@ -25,3 +25,43 @@ Generated candidate models: ARIMA(1,1,1), (1,1,2), (1,1,3).
 
  3. Model Fitting & Selection
 Three classes of models were fitted and compared:ARIMA(2,1,2),Exponential smoothhing model and SARIMA model
+3.1 ARIMA Model 
+
+Selected Model: ARIMA(2,1,2)
+Coefficients:
+AR1 = -0.2053, AR2 = 0.5644
+MA1 = 0.6481, MA2 = -0.2687
+AIC: 6495.13 → ✅ Best AIC so far
+Ljung-Box Test: p = 0.178 → ✅ Residuals are white noise (no significant autocorrelation)
+
+3.2 ETS Model (Error, Trend, Seasonality)
+
+Selected Model: ETS(A, A, N) → Additive Error, Additive Damped Trend, No Seasonality
+Smoothing Parameters:
+α (level) = 0.9999 → The new observation is very responsive to the last observed value
+β (trend) = 0.4575 → Moderate trend adaptation
+φ (damping) = 0.8 → Trend dampens over time (reasonable for volatile fuel prices)
+AIC: 9765.15 → ❌ Much higher than ARIMA → Thus less preferred statistically
+
+3.3 SARIMA Model (Seasonal ARIMA)
+We forced D=1 and bounded seasonal terms (max.P=2, max.Q=2) to rigorously test for yearly cycles in weekly fuel prices — a domain-reasonable hypothesis  while disabling stepwise search and approximation to ensure no viable seasonal model was overlooked by automation. 
+Selected Model: ARIMA(2,1,2) — same as non-seasonal auto.arima
+-> The algorithm found no significant seasonal pattern to justify seasonal terms (P=0, Q=0, D=0 internally, even though you forced D=1 search).
+
+📈 4. Forecasting Results (Next 52 Weeks)
+All models produced flat or very slowly changing forecasts. Here’s why:
+
+🔍 Why Forecasts Are Flat
+-ARIMA(2,1,2):
+This is a stationary model after differencing.Once differenced, if no strong autoregressive momentum remains, forecasts revert to long-run mean thus, the flat line.
+Coefficients suggest moderate mean-reversion (AR2 = 0.56), but not enough to sustain a trend.
+-ETS(A,A,N):
+Includes a damped trend (φ=0.8), so forecast shows a very gentle upward slope that flattens out .
+-SARIMA:
+Reduced to same ARIMA(2,1,2) → same flat forecast.
+
+5. Recommendations 
+ARIMA (2,1,2) has the lowest AIC and BIC values which reflect the goodness of fit of the models so the best model to adopt is ARIMA(2,1,2).It can serve as Baseline Model:Best statistical fit, clean residuals.
+
+
+
