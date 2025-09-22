@@ -49,5 +49,5 @@ Residual diagnostics confirmed white noise (Ljung-Box p > 0.05).
 
 Evaluation: RMSE, MAE, and MAPE for forecasting accuracy.
 
-Examined exponential smoothing model
+Examined exponential smoothing model,ARIMA and SARIMA models
 
