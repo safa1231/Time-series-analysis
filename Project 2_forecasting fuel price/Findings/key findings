@@ -1,0 +1,27 @@
+🎯 1. Objective
+
+To model and forecast the weekly retail price of Euro-Super 95 gasoline in a European market from January 2005 to August 2021, and generate a 52-week (1-year) forecast using statistically robust time series models: ARIMA, ETS, and SARIMA.
+
+ 2. Methodology
+
+2.1 Data Preparation
+  Source: Weekly fuel price dataset (2005–2021), filtered for “Euro-Super 95”.
+  Frequency: Weekly (≈860 observations from 2005-01-03 to 2021-08-16).
+  Variable: PRICE (EUR per barrel).
+2.2 Stationarity Testing
+Augmented Dickey-Fuller (ADF) Test on original series:
+Test Statistic: -2.529
+p-value: 0.354 → ❌ Not stationary (fail to reject H₀).
+First Differencing applied → tseries_diff
+ADF Test on Differenced Series:
+Test Statistic: -8.743
+p-value: < 0.01 →  Stationary SO one order of differencing is required for stationarity. 
+
+2.3 Model Identification (based on ACF/PACF)
+Plotted ACF and PACF of differenced series.
+Suggested potential AR and MA terms (based on lags that hace significant spikes).
+Generated candidate models: ARIMA(1,1,1), (1,1,2), (1,1,3).
+
+
+ 3. Model Fitting & Selection
+Three classes of models were fitted and compared:ARIMA(2,1,2),Exponential smoothhing model and SARIMA model
